@@ -2,7 +2,8 @@
 from __future__ import absolute_import
 import octoprint.plugin
 from octoprint.events import Events
-import RPi.GPIO as GPIO
+from gpiozero import Button
+
 from time import sleep
 import flask
 import json
@@ -71,27 +72,16 @@ class SmartFilamentSensor(octoprint.plugin.StartupPlugin,
 
 # Initialization methods
     def _setup_sensor(self):
-        # Clean up before intializing again, because ports could already be in use
-        GPIO.cleanup()
 
-        if(self.mode == 0):
-            self._logger.info("Using Board Mode")
-            GPIO.setmode(GPIO.BOARD)
-        else:
-            self._logger.info("Using BCM Mode")
-            GPIO.setmode(GPIO.BCM)
-
-        GPIO.setup(self.motion_sensor_pin, GPIO.IN)
+        btn = Button(self.motion_sensor_pin)
+        # GPIO.setup(self.motion_sensor_pin, GPIO.IN)
 
         # Add reset_distance if detection_method is distance_detection
         if (self.detection_method == 1):
-            # Remove event first, because it might been in use already
-            try:
-                GPIO.remove_event_detect(self.motion_sensor_pin)
-            except:
-                self._logger.warn("Pin " + str(self.motion_sensor_pin) + " not used before")
-
-            GPIO.add_event_detect(self.motion_sensor_pin, GPIO.BOTH, callback=self.reset_distance)
+            
+            btn.when_activated = self.reset_distance
+            btn.when_deactivated = self.reset_distance
+            # GPIO.add_event_detect(self.motion_sensor_pin, GPIO.BOTH, callback=self.reset_distance)
 
         if self.motion_sensor_enabled == False:
             self._logger.info("Motion sensor is deactivated")
@@ -161,10 +151,7 @@ class SmartFilamentSensor(octoprint.plugin.StartupPlugin,
         self._logger.debug("Sensor enabled: " + str(self.motion_sensor_enabled))
         
         if self.motion_sensor_enabled:
-            if (self.mode == 0):
-                self._logger.debug("GPIO mode: Board Mode")
-            else:
-                self._logger.debug("GPIO mode: BCM Mode")
+           
             self._logger.debug("GPIO pin: " + str(self.motion_sensor_pin))
 
             # Distance detection            
@@ -423,7 +410,7 @@ def __plugin_load__():
 
 def __plugin_check__():
     try:
-        import RPi.GPIO
+        import gpiozero
     except ImportError:
         return False
 
