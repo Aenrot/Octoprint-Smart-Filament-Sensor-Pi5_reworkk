@@ -5,36 +5,36 @@
 
 # The plugin's identifier, has to be unique
 from setuptools import setup
-plugin_identifier = "smartfilamentsensor"
+plugin_identifier = "smartfilamentsensorv2"
 
 # The plugin's python package, should be "octoprint_<plugin identifier>", has to be unique
-plugin_package = "octoprint_smart_filament_sensor"
+plugin_package = "octoprint_smart_filament_sensor_v2"
 
 # The plugin's human readable name. Can be overwritten within OctoPrint's internal data via __plugin_name__ in the
 # plugin module
-plugin_name = "Octoprint-Smart-Filament-Sensor"
+plugin_name = "Octoprint-Smart-Filament-Sensor-V2"
 
 # The plugin's version. Can be overwritten within OctoPrint's internal data via __plugin_version__ in the plugin module
-plugin_version = "1.1.5.3"
+plugin_version = "0.1"
 
 # The plugin's description. Can be overwritten within OctoPrint's internal data via __plugin_description__ in the plugin
 # module
-plugin_description = "A plugin to directly add Smart Filament Sensors like BigTreeTech Smart Filament Sensor to Octoprint."
+plugin_description = "A plugin to directly add Smart Filament Sensors like BigTreeTech Smart Filament Sensor to Octoprint. Modified to use gpiozer library for Pi5"
 
 # The plugin's author. Can be overwritten within OctoPrint's internal data via __plugin_author__ in the plugin module
-plugin_author = "Anni Lange"
+plugin_author = "Aenrot"
 
 # The plugin's author's mail address.
-plugin_author_email = "maocypher@gmail.com"
+plugin_author_email = "aenriot@gmail.com"
 
 # The plugin's homepage URL. Can be overwritten within OctoPrint's internal data via __plugin_url__ in the plugin module
-plugin_url = "https://github.com/maocypher/Octoprint-Smart-Filament-Sensor"
+plugin_url = "https://github.com/Aenrot/Octoprint-Smart-Filament-Sensor-V2"
 
 # The plugin's license. Can be overwritten within OctoPrint's internal data via __plugin_license__ in the plugin module
 plugin_license = "AGPLv3"
 
 # Any additional requirements besides OctoPrint should be listed here
-plugin_requires = ['RPi.GPIO']
+plugin_requires = ['gpiozero']
 
 # --------------------------------------------------------------------------------------------------------------------
 # More advanced options that you usually shouldn't have to touch follow after this point

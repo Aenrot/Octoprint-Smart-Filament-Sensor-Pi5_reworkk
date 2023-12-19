@@ -6,8 +6,8 @@ import RPi.GPIO as GPIO
 from time import sleep
 import flask
 import json
-from octoprint_smart_filament_sensor.filament_motion_sensor_timeout_detection import FilamentMotionSensorTimeoutDetection
-from octoprint_smart_filament_sensor.data import SmartFilamentSensorDetectionData
+from octoprint_smart_filament_sensor_v2.filament_motion_sensor_timeout_detection import FilamentMotionSensorTimeoutDetection
+from octoprint_smart_filament_sensor_v2.data import SmartFilamentSensorDetectionData
 
 class SmartFilamentSensor(octoprint.plugin.StartupPlugin,
                                  octoprint.plugin.EventHandlerPlugin,
