@@ -1,5 +1,5 @@
 $(function(){
-    function SmartFilamentSensorSettingsViewModel(parameters){
+    function SmartFilamentSensorv2SettingsViewModel(parameters){
         var self = this;
 
         self.settingsViewModel = parameters[0];
@@ -12,7 +12,7 @@ $(function(){
         self.isConnectionTestRunning = ko.observable(false);
 
         self.onStartup = function() {
-            self.connectionTestDialog = $("#settings_plugin_smartfilamentsensor_connectiontest");
+            self.connectionTestDialog = $("#settings_plugin_smartfilamentsensorv2_connectiontest");
         };
         
         self.showConnectionTest = function() {
@@ -71,8 +71,8 @@ $(function(){
     }
 
     OCTOPRINT_VIEWMODELS.push({
-        construct: SmartFilamentSensorSettingsViewModel,
-        name: "smartFilamentSensorSettingsViewModel",
+        construct: SmartFilamentSensorv2SettingsViewModel,
+        name: "smartFilamentSensorv2SettingsViewModel",
         dependencies: ["settingsViewModel", "printerStateViewModel"],
         elements: ["#settings_plugin_smartfilamentsensorv2"]
     });

@@ -1,5 +1,5 @@
 $(function(){
-    function SmartFilamentSensorSidebarViewModel(parameters){
+    function SmartFilamentSensorv2SidebarViewModel(parameters){
         var self = this;
 
         self.settingsViewModel = parameters[0];
@@ -98,9 +98,9 @@ $(function(){
     }
 
     OCTOPRINT_VIEWMODELS.push({
-        construct: SmartFilamentSensorSidebarViewModel,
-        name: "smartFilamentSensorSidebarViewModel",
+        construct: SmartFilamentSensorv2SidebarViewModel,
+        name: "smartFilamentSensorv2SidebarViewModel",
         dependencies: ["settingsViewModel"],
-        elements: ["#sidebar_plugin_smartfilamentsensor"]
+        elements: ["#sidebar_plugin_smartfilamentsensorv2"]
     });
 });

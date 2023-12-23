@@ -8,9 +8,9 @@ from time import sleep
 import flask
 import json
 from octoprint_smart_filament_sensor_v2.filament_motion_sensor_timeout_detection import FilamentMotionSensorTimeoutDetection
-from octoprint_smart_filament_sensor_v2.data import SmartFilamentSensorDetectionData
+from octoprint_smart_filament_sensor_v2.data import SmartFilamentSensorv2DetectionData
 
-class SmartFilamentSensor(octoprint.plugin.StartupPlugin,
+class SmartFilamentSensorv2(octoprint.plugin.StartupPlugin,
                                  octoprint.plugin.EventHandlerPlugin,
                                  octoprint.plugin.TemplatePlugin,
                                  octoprint.plugin.SettingsPlugin,
@@ -28,7 +28,7 @@ class SmartFilamentSensor(octoprint.plugin.StartupPlugin,
         self.currentE = -1
         self.START_DISTANCE_OFFSET = 7
         self.send_code = False
-        self._data = SmartFilamentSensorDetectionData(self.motion_sensor_detection_distance, True, self.updateToUi)
+        self._data = SmartFilamentSensorv2DetectionData(self.motion_sensor_detection_distance, True, self.updateToUi)
 
 #Properties
     @property
@@ -124,7 +124,7 @@ class SmartFilamentSensor(octoprint.plugin.StartupPlugin,
         return [dict(type="settings", custom_bindings=True)]
 
     def get_assets(self):
-        return dict(js=["js/smartfilamentsensor_sidebar.js", "js/smartfilamentsensor_settings.js"])
+        return dict(js=["js/smartfilamentsensorv2_sidebar.js", "js/smartfilamentsensorv2_settings.js"])
 
 # Sensor methods
     # Connection tests
@@ -326,7 +326,7 @@ class SmartFilamentSensor(octoprint.plugin.StartupPlugin,
 # Plugin update methods
     def update_hook(self):
         return dict(
-            smartfilamentsensor=dict(
+            smartfilamentsensorv2=dict(
                 displayName="Smart Filament Sensor V2",
                 displayVersion=self._plugin_version,
 
@@ -398,7 +398,7 @@ __plugin_pythoncompat__ = ">=2.7,<4"
 
 def __plugin_load__():
     global __plugin_implementation__
-    __plugin_implementation__ = SmartFilamentSensor()
+    __plugin_implementation__ = SmartFilamentSensorv2()
 
     global __plugin_hooks__
     __plugin_hooks__ = {
