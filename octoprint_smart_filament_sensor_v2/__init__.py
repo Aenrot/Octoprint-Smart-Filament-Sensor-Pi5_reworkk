@@ -18,11 +18,11 @@ class SmartFilamentSensor(octoprint.plugin.StartupPlugin,
                                  octoprint.plugin.SimpleApiPlugin):
 
     def initialize(self):
-        self._logger.info("Running RPi.GPIO version '{0}'".format(GPIO.VERSION))
-        if GPIO.VERSION < "0.6":       # Need at least 0.6 for edge detection
-            raise Exception("RPi.GPIO must be greater than 0.6")
-        GPIO.setwarnings(False)        # Disable GPIO warnings
-
+        # self._logger.info("Running RPi.GPIO version '{0}'".format(gpiozero.VERSION))
+        # if GPIO.VERSION < "0.6":       # Need at least 0.6 for edge detection
+        #     raise Exception("RPi.GPIO must be greater than 0.6")
+        # GPIO.setwarnings(False)        # Disable GPIO warnings
+        # Disabled for now
         self.print_started = False
         self.lastE = -1
         self.currentE = -1
@@ -62,10 +62,10 @@ class SmartFilamentSensor(octoprint.plugin.StartupPlugin,
         return int(self._settings.get(["motion_sensor_max_not_moving"]))
 
 #General Properties
-    @property
-    def mode(self):
-        return int(self._settings.get(["mode"]))
-
+    # @property
+    # def mode(self):
+    #     return int(self._settings.get(["mode"]))
+    # 
     #@property
     #def send_gcode_only_once(self):
     #    return self._settings.get_boolean(["send_gcode_only_once"])
@@ -102,7 +102,7 @@ class SmartFilamentSensor(octoprint.plugin.StartupPlugin,
     def get_settings_defaults(self):
         return dict(
             #Motion sensor
-            mode=0,    # Board Mode
+            # mode=0,    # Board Mode not needed
             motion_sensor_enabled = True, #Sensor detection is enabled by default
             motion_sensor_pin=-1,  # Default is no pin
             detection_method = 0, # 0 = timeout detection, 1 = distance detection
