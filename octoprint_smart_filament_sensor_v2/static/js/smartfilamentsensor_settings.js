@@ -74,6 +74,6 @@ $(function(){
         construct: SmartFilamentSensorSettingsViewModel,
         name: "smartFilamentSensorSettingsViewModel",
         dependencies: ["settingsViewModel", "printerStateViewModel"],
-        elements: ["#settings_plugin_smartfilamentsensor"]
+        elements: ["#settings_plugin_smartfilamentsensorv2"]
     });
 });
