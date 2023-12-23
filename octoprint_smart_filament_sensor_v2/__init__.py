@@ -327,13 +327,13 @@ class SmartFilamentSensor(octoprint.plugin.StartupPlugin,
     def update_hook(self):
         return dict(
             smartfilamentsensor=dict(
-                displayName="Smart Filament Sensor",
+                displayName="Smart Filament Sensor V2",
                 displayVersion=self._plugin_version,
 
                 # version check: github repository
                 type="github_release",
-                user="maocypher",
-                repo="Octoprint-Smart-Filament-Sensor",
+                user="Aenrot",
+                repo="Octoprint-Smart-Filament-Sensor-V2",
                 current=self._plugin_version,
 
                 # stable releases
@@ -353,7 +353,7 @@ class SmartFilamentSensor(octoprint.plugin.StartupPlugin,
 				],
 
                 # update method: pip
-                pip="https://github.com/maocypher/Octoprint-Smart-Filament-Sensor/archive/{target_version}.zip"
+                pip="https://github.com/Aenrot/Octoprint-Smart-Filament-Sensor-V2/archive/{target_version}.zip"
             )
         )
 
@@ -392,8 +392,8 @@ class SmartFilamentSensor(octoprint.plugin.StartupPlugin,
         return cmd
 
 
-__plugin_name__ = "Smart Filament Sensor"
-__plugin_version__ = "1.1.5.3"
+__plugin_name__ = "Smart Filament Sensor V2"
+__plugin_version__ = "0.1"
 __plugin_pythoncompat__ = ">=2.7,<4"
 
 def __plugin_load__():

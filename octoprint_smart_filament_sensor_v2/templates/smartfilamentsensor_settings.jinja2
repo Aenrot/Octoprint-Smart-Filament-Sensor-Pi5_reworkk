@@ -1,14 +1,14 @@
 <div id="settings_plugin_smartfilamentsensor">
-    <h4>{{ _('Smart Filament Sensor') }}</h4>
+    <h4>{{ _('Smart Filament Sensor V2') }}</h4>
     <form class="form-horizontal">
     <!-- General -->
-        <div class="alert alert-primary">With V1.1.2 of the plugin, the Distance Detection was improved. 
+       <div class="alert alert-primary">With V1.1.2 of the plugin, the Distance Detection was improved. 
         It is recommended to use the distance detection as it is more accurate than the timeout detection.</div>
         <h6>{{ _('General') }}</h6>
         <div class="control-group">
             <label class="control-label">{{ _('Board Pin Mode:') }}</label>
             <div class="controls" data-toggle="tooltip" title="{{ _('RPi pins numbered in Board mode or BCM mode?') }}">
-                <select class="select-mini" data-bind="value: settingsViewModel.settings.plugins.smartfilamentsensor.mode">
+                <select class="select-mini" data-bind="value: settingsViewModel.settings.plugins.smartfilamentsensorv2.mode">
                     <option value=0>{{ _('Board Mode') }}</option>
                     <option value=1>{{ _('BCM Mode') }}</option>
                 </select>
@@ -18,7 +18,7 @@
         <div class="control-group">
             <label class="control-label">{{ _('Detection Method:') }}</label>
             <div class="controls" data-toggle="tooltip" title="{{ _('The method to detect if filament movement stopped') }}">
-                <select class="select-mini" data-bind="value: settingsViewModel.settings.plugins.smartfilamentsensor.detection_method">
+                <select class="select-mini" data-bind="value: settingsViewModel.settings.plugins.smartfilamentsensorv2.detection_method">
                     <option value=0>{{ _('Timeout detection') }}</option>
                     <option value=1>{{ _('Distance detection') }}</option>
                 </select>
@@ -27,7 +27,7 @@
         <div class="control-group">
             <label class="control-label">{{ _('Pause command:') }}</label>
             <div class="controls" data-toggle="tooltip" title="{{ _('The pause command that is sent to the printer') }}">
-                <select class="select-mini" data-bind="value: settingsViewModel.settings.plugins.smartfilamentsensor.pause_command">
+                <select class="select-mini" data-bind="value: settingsViewModel.settings.plugins.smartfilamentsensorv2.pause_command">
                     <option value="M0">{{ _('M0 - Stop') }}</option>
                     <option value="M1">{{ _('M1 - Sleep') }}</option>
                     <option value="M25">{{ _('M25 - Pause SD Print') }}</option>
@@ -42,14 +42,14 @@
         <div class="control-group">
             <label class="control-label">{{ _('Motion Sensor GPIO Pin:') }}</label>
             <div class="controls" data-toggle="tooltip" title="{{ _('Which Raspberry Pi GPIO pin your switch is attached to (-1 disables the plugin)') }}">
-                <input type="text" step="any" min="0" class="input-mini text-right" data-bind="value: settingsViewModel.settings.plugins.smartfilamentsensor.motion_sensor_pin">
+                <input type="text" step="any" min="0" class="input-mini text-right" data-bind="value: settingsViewModel.settings.plugins.smartfilamentsensorv2.motion_sensor_pin">
             </div>
         </div>
         <!-- Enable / Disable detection -->
         <div class="control-group">
             <div class="controls" data-toggle="tooltip" title="{{ _('Enable or disble the sensor usage.') }}">
                 <label class="checkbox">
-                    <input type="checkbox" data-bind="checked: settingsViewModel.settings.plugins.smartfilamentsensor.motion_sensor_enabled"> {{ _('Enable Sensor') }}
+                    <input type="checkbox" data-bind="checked: settingsViewModel.settings.plugins.smartfilamentsensorv2.motion_sensor_enabled"> {{ _('Enable Sensor') }}
                 </label>
             </div>
         </div>
@@ -59,7 +59,7 @@
             <label class="control-label">{{ _('Detection time:') }}</label>
             <div class="controls">
                 <div class="input-append" data-toggle="tooltip" title="{{ _('When a sensor state change happens, wait for this amount of time to wait for the signal to stabilize.') }}">
-                    <input type="number" step="any" min="0" class="input-mini text-right" data-bind="value: settingsViewModel.settings.plugins.smartfilamentsensor.motion_sensor_max_not_moving">
+                    <input type="number" step="any" min="0" class="input-mini text-right" data-bind="value: settingsViewModel.settings.plugins.smartfilamentsensorv2.motion_sensor_max_not_moving">
                     <span class="add-on">sec</span>
                 </div>
                 <span class="help-block"><small>Don't choose the timeout value too small. During long slow movements, it takes some time until the sensor changes the value.</small></span>
@@ -73,7 +73,7 @@
             <div class="controls">
                 <div class="input-append" data-toggle="tooltip" title="{{ _('The distance that is allowed to be passed without chaning the sesnor status.') }}">
                     <!--<input type="number" step="any" min="0" class="input-mini text-right" data-bind="value: distanceDetectionDistance">-->
-                    <input type="number" step="any" min="0" class="input-mini text-right" data-bind="value: settingsViewModel.settings.plugins.smartfilamentsensor.motion_sensor_detection_distance">
+                    <input type="number" step="any" min="0" class="input-mini text-right" data-bind="value: settingsViewModel.settings.plugins.smartfilamentsensorv2.motion_sensor_detection_distance">
                     <span class="add-on">mm</span>
                 </div>
                 <span class="help-block"><small>GCode commands that are sent to the printer are interpreted. Don't choose this value too small, because it could make the detection too sensitive.</small></span>
