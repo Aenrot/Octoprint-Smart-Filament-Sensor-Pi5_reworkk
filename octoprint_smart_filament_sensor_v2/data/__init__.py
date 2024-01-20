@@ -1,6 +1,6 @@
 import json
 
-class SmartFilamentSensorDetectionData(object):
+class SmartFilamentSensorv2DetectionData(object):
     @property
     def remaining_distance(self):
         return self._remaining_distance
