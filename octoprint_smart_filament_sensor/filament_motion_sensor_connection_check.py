@@ -9,28 +9,28 @@
 ##  - python3 filament_motion_sensor_connection_check.py
 ##  - To save some filament you can unload the filament
 ##      before and move it manually in the sensor
-
-import RPi.GPIO as GPIO
+from gpiozero import Button
 import time
 
 #CONST
 # Configure your GPIO pin
-USED_PIN = 11
-GPIO.setmode(GPIO.BOARD)
-#GPIO.setmode(GPIO.BCM)
+USED_PIN = 17
 # Time in seconds
 max_not_moving_time = 2
 # Set up the GPIO channels - one input and one output
-GPIO.setup(USED_PIN, GPIO.IN)
 
-lastValue = GPIO.input(USED_PIN)
+btn = Button(USED_PIN)
+
 # Get current time in seconds
 lastMotion = time.time()
 
 def main():
 	try: 
-		GPIO.add_event_detect(USED_PIN, GPIO.BOTH, callback=motion)
-
+		
+		lastValue = btn.value
+		btn.when_activated = motion
+		btn.when_deactivated = motion
+  			
 		while True:
 			timespan = (time.time() - lastMotion)
 
@@ -41,15 +41,15 @@ def main():
 
 			time.sleep(0.250)
 		
-		GPIO.remove_event_detect(USED_PIN)
+		
 	except KeyboardInterrupt:
 		print ("Done")
 		pass
 
 
-def motion(pPin):
-	global lastMotion
+def motion():
+	lastValue = btn.value
 	lastMotion = time.time()
-	print("Motion detected at " + str(lastMotion))
+	print(f"Motion detected, value = {lastValue} at {lastMotion}")
 
 main()
