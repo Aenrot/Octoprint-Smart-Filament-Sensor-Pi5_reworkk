@@ -90,6 +90,7 @@ class SmartFilamentSensor(octoprint.plugin.StartupPlugin,
         self.motion_sensor_thread = None
 
         self.load_smart_filament_sensor_data()
+        self._logger.info("Sensor setup")
 
 
     def load_smart_filament_sensor_data(self):
